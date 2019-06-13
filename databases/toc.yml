@@ -1,4 +1,14 @@
-- name: Redis
-  href: redis/
 - name: MySql
-  href: mysql/
+  items:
+  - name: index
+    href: mysql/index.md
+- name: Redis
+  items:
+  - name: 命令
+    href: redis/commands.md
+  - name: lists
+    href: redis/commands-lists.md
+  - name: string
+    href: redis/commands-string.md
+  - name: 分布式锁
+    href: redis/distributed-locks-with-redis.md

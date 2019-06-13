@@ -1,14 +1,9 @@
----
-title: C#编码标准和命名规范
-date: 2016-12-12
-categories:
-- standard
-tags:
-- C#
----
 
-建立编码标准和命名规范的直接目的是保持代码可读性和可维护性，而可读性和可维护性对软件质量、开发效率有着至关重要的作用;
-本文档主要依据微软官方编码规范，并参考几个优秀开源框架的源码风格整理而成;
+C#编码规范
+=========
+
+> [!NOTE]建立编码标准和命名规范的直接目的是保持代码可读性和可维护性，而可读性和可维护性对软件质量、开发效率有着至关重要的作用;
+> 本文档主要依据微软官方编码规范，并参考几个优秀开源框架的源码风格整理而成;
 
 ## 1.类成员在文件中的顺序
 0. 静态成员
@@ -18,8 +13,7 @@ tags:
 4. 共有方法
 5. 私有方法
 
-**下面的代码片段只演示各类成员在类中的编排顺序，并不演示注释方式**
-```
+```csharp
 public class ProductController
 {
     //0. 静态成员
@@ -55,14 +49,14 @@ public class ProductController
 ## 2.命名规范
 - 类名称采用`PascalCasing`风格
 
-```
+```csharp
 //正确
 public class HomeController
 {
 
 }
 ```
-```
+```csharp
 //错误
 public class homeController
 {
@@ -71,7 +65,7 @@ public class homeController
 ```
 - 方法参数和局部变量采用`camelCasing`风格
 
-```
+```csharp
 //正确
 public void LoadProductPage(int pageIndex, int pageSize)
 {
@@ -80,7 +74,7 @@ public void LoadProductPage(int pageIndex, int pageSize)
     //do something
 }
 ```
-```
+```csharp
 //错误
 public void LoadProductPage(int PageIndex, int PageSize)
 {
@@ -92,7 +86,7 @@ public void LoadProductPage(int PageIndex, int PageSize)
 
 - 避免使用单词缩写，除非它非常通用
 
-```
+```csharp
 //错误
 UserGroup userGrp = new UserGroup();
 ProductDocument productDoc = new ProductDocument();
@@ -108,7 +102,7 @@ XmlDocument xmlDocument = new XmlDocument();//xml = Extensive Markup Language
 
 - 除了私有字段使用下划线以外，其它任何名称都不得使用下划线
 
-```
+```csharp
 //正确
 public class OrderService
 {
@@ -135,7 +129,7 @@ public void CancelOrder(int _orderId)
 
 - 使用预定义的类型名称，而不要使用系统类型名
 
-```
+```csharp
 //正确
 int orderId = 1;
 string number = "D16121101234";
@@ -149,7 +143,7 @@ Boolean isSuccess = false;
 
 - 除原生类型(int、string、DateTime etc)外，请使用`var`来声明局部变量
 
-```
+```csharp
 int pageIndex = 1;
 bool isOpen = false;
 string sometext = "";
@@ -160,7 +154,7 @@ var product = new Product();
 
 - 使用名词或名词短语去命名一个类名
 
-```
+```csharp
 public class ServiceProvider
 {
 
@@ -174,7 +168,7 @@ public class PriceFormatter
 
 - 使用名词或形容词去命名一个接口名，并带上前缀`I`
 
-```
+```csharp
 public class IUserService
 {
 
@@ -187,7 +181,7 @@ public class IEnumerable
 ```
 - 方法名称使用动词做前缀，如：
 
-```
+```csharp
 public void SubmitOrder() { }
 
 public void CancelOrder() { }
@@ -221,7 +215,7 @@ public void IsOver() { }
 ## 3.异常处理
 - 一定**不要**catch了异常而什么都不做！
 
-```
+```csharp
 try
 {
     //do something
@@ -234,7 +228,7 @@ catch (Exception)
 - 应用程序最外层需**要有**全局异常处理，包括错误日志记录和输出友好提示
 - 函数开始**要有**参数检查，检查不通过直接抛出相应异常
 
-```
+```csharp
 public void PublishProduct(Product product)
 {
     if (product == null)
@@ -263,7 +257,7 @@ public void PublishProduct(Product product)
 - 另起一行保持垂直对齐
 - 括弧内只有一行语句时花括弧不需要
 
-```
+```csharp
 //正确
 public class BaseController
 {

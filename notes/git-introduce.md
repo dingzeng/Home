@@ -1,13 +1,7 @@
----
-title: Git简介
-date: 2017-08-02
-categories:
-- notes
-tags:
-- git
----
 
-# 概念
+Git介绍
+=======
+
 ## 工作目录、暂存区、本地仓库、远程仓库
 - 工作目录：源代码目录
 - 暂存区：下一次提交的内容的存储区域
@@ -37,8 +31,8 @@ tags:
 - NuGet Packages
 - Build results
 
-# 命令
-## 配置管理
+## 命令
+### 配置管理
 ```
 # 查看指定配置项
 git config user.name
@@ -50,7 +44,7 @@ git config user.name jery
 git config --global credential.helper store
 ```
 
-## 基本操作
+### 基本操作
 ```
 # Clone一个已经存在的项目
 git clone http://gitlab.qidid.com/erpdev/wlwerp.git
@@ -71,7 +65,7 @@ git commit -a -m "提交的注释"
 git push
 ```
 
-## 分支操作
+### 分支操作
 本地
 ```
 # 查看本地分支

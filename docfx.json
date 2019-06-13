@@ -5,7 +5,12 @@
         "files": [
           "toc.yml",
           "*.md",
-          "algorithm/**/*.{md,yml}","databases/**/*.{md,yml}","design-pattern/**/*.{md,yml}","dotnet/**/*.{md,yml}","font-end/**/*.{md,yml}","notes/**/*.{md,yml}"
+          "algorithm/**/*.{md,yml}",
+          "databases/*.{md,yml}","databases/**/*.{md,yml}",
+          "design-pattern/**/*.{md,yml}",
+          "dotnet/**/*.{md,yml}",
+          "font-end/**/*.{md,yml}",
+          "notes/**/*.{md,yml}"
         ]
       }
     ],
