@@ -1,0 +1,4 @@
+- name: "翻译：ASP.NET Core介绍"
+  href: aspnet_core_intro.md
+- name: 模型验证
+  href: model-validation.md
