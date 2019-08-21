@@ -37,3 +37,66 @@ Docker介绍
 # Ubuntu下安装Docker
 
 > [https://yeasy.gitbooks.io/docker_practice/content/install/ubuntu.html](https://yeasy.gitbooks.io/docker_practice/content/install/ubuntu.html)
+
+# 基本命令
+
+## 镜像操作
+
+### 获取镜像
+格式：
+`docker pull [仓库服务地址/]NAME[:TAG|@DIGEST]`
+
+Options:
+```
+-a, --all-tags  下载所有标签
+-q, --quiet     禁止冗长的输出   
+```
+
+获取镜像使用的标识格式和git的仓库格式很像:
+- Git       https://github.com/dingzeng/Home.git
+- Docker    https://hub.docker.com/library/ubuntu:latest
+
+|服务地址|用户名|仓库名|标签|
+---|:--:|:--:|---:
+https://github.com|dingzeng|Home|
+https://hub.docker.com|library|ubuntu|latest
+
+获取镜像时可以指定一个镜像的名字，会默认从Docker Hub服务上下载，默认使用library作为用户名，latest作为默认标签
+
+### 查看镜像列表
+格式：  
+`docker image ls [OPTIONS] [REPOSITORY[:TAG]]`
+
+Options:
+```
+-a, --all               显示所有镜像（默认隐藏中间层镜像）
+    --digests           显示摘要
+-f, --filter filter     过滤输出，since、before、label
+    --format string     格式化输出
+-q, --quiet             只显示镜像编码
+```
+
+### 删除一个或多个镜像
+格式：  
+`docker image rm [OPTIONS] IMAGE [IMAGE...]`
+
+Options:
+```
+-f, --force     强制删除
+    --no-prune  不删除没有标签的镜像
+```
+Notes:
+1. 可以同时删除多个镜像
+2. 删除镜像时可以指定镜像名、ID和摘要
+3. rm操作不一定发生删除行为：
+    - 当镜像被容器依赖时；
+    - 当镜像被其它镜像依赖时；
+    - 删除实际上是删除镜像的某个标签，当该镜像下还有标签时，该镜像没有实际被删除；
+
+### 删除空镜像
+格式：  `docker image prune`
+```
+
+```
+
+docker system df
