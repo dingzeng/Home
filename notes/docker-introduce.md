@@ -94,9 +94,45 @@ Notes:
     - 删除实际上是删除镜像的某个标签，当该镜像下还有标签时，该镜像没有实际被删除；
 
 ### 删除空镜像
-格式：  `docker image prune`
+格式：  
+`docker image prune`
+
+Options:
+```
+-a, --all   删除所有未使用的镜像
+-f, --force 强制删除
 ```
 
+## 使用commit定制镜像
+格式：
+`docker commit [OPTIONS] CONTAINER [REPORITORY:[TAG]]`
+
+Options:
 ```
+-a, --author    指定作者
+-m, --message   指定提交消息
+```
+
+Notes:
+commit用于理解镜像的构建过程非常有用，但是不要通过commit的方式构建你有用的镜像，清使用Dockfile文件进行构建，因为基于容器构建的镜像是一个黑匣子，后面没有人能知道它是怎么构建而来的。
+
+## 使用Dockerfile文件构建镜像
+格式：
+`docker build [OPTIONS] PATH | URL | -`
+
+Options:
+```
+-f, --file      Dockerfile文件名，默认为：Context/Dockerfile
+-t, --tag       ‘name:tag’,指定镜像的名字和标签
+```
+
+Notes:
+1.docker build实际上是调用Docker Enginer提供的Remote API进行构建的，最后的路径是`构建上下文`的路径，而不是Dockerfile的文件路径；
+2.Dockerfile文件中的COPY等指令使用的是相对构建上下文的相对路径；
+
+### 1.COPY 复制文件
+格式：
+- `COPY `
 
 docker system df
+docker history IMAGE
