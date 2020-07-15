@@ -9,7 +9,7 @@
 一个配置源表示一类配置数据的来源
 
 接口定义如下：
-```
+```C#
 public interface IConfigurationSource
 {
   IConfigurationProvider Build(IConfigurationBuilder builder);
@@ -17,14 +17,14 @@ public interface IConfigurationSource
 ```
 
 系统内置了多种配置源类型：
-- 环境变量配置源(EnvironmentVariablesConfigurationSource)
-- Azure配置源(AzureKeyVaultConfigurationSource)
-- 命令行配置源(CommandLineConfigurationSource)
-- 文件配置源(FileConfigurationSource)
-  - Xml文件配置源(XmlConfigurationSource)
-  - Ini文件配置源(IniConfigurationSource)
-  - Json文件配置源(JsonConfigurationSource)
-- 目录文件配置源(KeyPerFileConfigurationSource)
+- 环境变量配置源-EnvironmentVariablesConfigurationSource
+- Azure配置源-AzureKeyVaultConfigurationSource
+- 命令行配置源-CommandLineConfigurationSource
+- 文件配置源-FileConfigurationSource
+  - Xml文件配置源-XmlConfigurationSource
+  - Ini文件配置源-IniConfigurationSource
+  - Json文件配置源-JsonConfigurationSource
+- 目录文件配置源-KeyPerFileConfigurationSource
 
 顾名思义，环境变量配置源是表示来自系统环境变量的配置，Azure配置源表示来自Azure服务中的配置，命令行配置源是表示在启动一个进程时提供的命令行参数，各中文件类型的配置源则是来自对应格式文件的配置，目录文件配置源可以指定一个目录，目录里面的文件名作为配置的key,而文件的内容则是配置的值。
 
@@ -47,7 +47,7 @@ public interface IConfigurationSource
 **IConfiguration**
 
 一个IConfiguration对象表示从一个或多个配置源中获得的配置数据，它是一个有层次的key-value数据集合，接口定义如下：
-```
+```C#
 public interface IConfiguration
 {
     string this[string key] { get; set; }
@@ -73,7 +73,7 @@ IConfigurationRoot表示一个配置的根节点，IConfigurationSection表示�
 **配置构建器**
 
 在获取配置时，我们并不直接使用具体的配置源或配置提供者，而是使用Build模式来进行配置对象的构建，系统默认的内置构建器为`ConfigurationBuilder`,它实现了`IConfigurationBuilder`接口，接口定义如下：
-```
+```C#
 public interface IConfigurationBuilder
 {
     IDictionary<string, object> Properties { get; }
@@ -84,7 +84,7 @@ public interface IConfigurationBuilder
 ```
 
 获取配置示例代码：
-```
+```C#
 IConfiguration configuration = new ConfigurationBuilder()
     .AddCommandLine(args)
     .AddJsonFile("appsettings.json")
