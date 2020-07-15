@@ -2,7 +2,7 @@
 
 - 基础篇
   - 自定义中间件示例
-  - 自定义配置源示例
+  - [自定义配置源示例](./custom-configuration-source.md)
   - 集成Serilog
   - 使用Autofac替换.NET Core中的默认DI容器
 - WebAPI
