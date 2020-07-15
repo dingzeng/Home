@@ -4,7 +4,6 @@
 - .NET开发工程师
 - 15871369831
 - msaccountid@hotmail.com
-- dingzeng.github.io
 - 6年工作经验
 - 本科 · 计算机通信工程专业
 
