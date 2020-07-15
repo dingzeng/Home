@@ -1,6 +1,5 @@
 ---
 title: 设计模式-建造者模式
-date: 2017-12-28
 categories:
 - notes
 tags:

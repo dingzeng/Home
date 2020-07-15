@@ -1,6 +1,5 @@
 ---
 title: Redis实现的分布式锁
-date: 2017-11-10
 categories:
 - notes
 tags:

@@ -1,6 +1,5 @@
 ---
 title: 设计模式-工厂方法模式
-date: 2017-02-14
 categories:
 - notes
 tags:

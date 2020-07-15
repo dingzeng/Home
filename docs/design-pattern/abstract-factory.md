@@ -1,6 +1,5 @@
 ---
 title: 设计模式-抽象工厂模式
-date: 2017-02-13
 categories:
 - notes
 tags:

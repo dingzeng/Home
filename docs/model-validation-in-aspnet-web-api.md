@@ -1,6 +1,5 @@
 ---
 title: ASP.NET中的模型验证
-date: 2016-12-22
 categories:
 - notes
 tags:

@@ -1,6 +1,5 @@
 ---
 title: 设计模式-单例
-date: 2017-02-16
 categories:
 - notes
 tags:
