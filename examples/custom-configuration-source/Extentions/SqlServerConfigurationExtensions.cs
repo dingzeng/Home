@@ -10,7 +10,8 @@ namespace Microsoft.Extensions.Configuration
     {
         public static IConfigurationBuilder AddSqlServerConfiguration(this IConfigurationBuilder builder, string connectionString, string tableName)
         {
-            return builder.Add(new SqlServerConfigurationSource(connectionString, tableName));
+            var source = new SqlServerConfigurationSource(connectionString, tableName);
+            return builder.Add(source);
         }
     }
 }

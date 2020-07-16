@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using Microsoft.Extensions.Configuration;
 
 namespace custom_configuration_source
@@ -7,17 +8,13 @@ namespace custom_configuration_source
     {
         static void Main(string[] args)
         {
-            string connectionString = "Server=tcp:127.0.0.1,5433;Database=dotnetcoredemo;User Id=sa;Password=Km666888;";
-            string tableName = "sys_config";
+            string connectionString = "Server=tcp:127.0.0.1,1433;Database=examples;User Id=sa;Password=Km666888;";
+            string tableName = "custom-configuration-source";
 
             var configuration = new ConfigurationBuilder()
                 .AddSqlServerConfiguration(connectionString, tableName)
                 .Build();
 
-            // Write
-            configuration["Hello"] = DateTime.Now.ToString();
-
-            // READ
             Console.WriteLine(configuration["Hello"]);
             Console.ReadLine();
         }
