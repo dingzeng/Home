@@ -97,56 +97,43 @@ IConfiguration configuration = new ConfigurationBuilder()
 ## 二、自定义数据库配置数据源
 
 接下来实现一个已数据库为数据源的配置源，通过上面的分析我们知道了要实现一个自定义配置源的主要工作：
-1. 定义数据源类，实现`IConfigurationSource`接口
+1. 定义配置源，实现`IConfigurationSource`接口
 2. 定义对应的配置提供者，实现`IConfigurationProvider`接口
 3. 提供一个`IConfigurationBuilder`扩展方法，将配置源添加进配置构建器中
 
-**1.定义数据源类**
+**表格结构和数据**
 
+|Key|Value|
+|---|---|
+|Hello|DOTNETCORE|
+|Logging:Level|Info|
+|Logging:Provider|Default|
+
+**1.定义配置源**
+
+> 配置源并不直接负责配置数据的获取，而是通过Build方法放回的Provider进行实际数据的获取操作，这里只是封装了数据库配置源最关键的连接字符串以及表名。
 ```C#
 public class SqlServerConfigurationSource : IConfigurationSource
 {
-    private readonly string _connectionString;
-    private readonly string _tableName;
+    public string ConnectionString { get; }
+    public string TableName { get; }
 
     public SqlServerConfigurationSource(string connectionString, string tableName)
     {
-        this._connectionString = connectionString;
-        this._tableName = tableName;
+        this.ConnectionString = connectionString;
+        this.TableName = tableName;
     }
 
     public IConfigurationProvider Build(IConfigurationBuilder builder)
     {
         return new SqlServerConfigurationProvider(this);
     }
-
-    public Dictionary<string, string> QueryAll()
-    {
-        var data = new Dictionary<string, string>();
-        using (SqlConnection conn = new SqlConnection(this._connectionString))
-        {
-            conn.Open();
-            using (SqlCommand cmd = conn.CreateCommand())
-            {
-                cmd.CommandText = $"SELECT [Key], [Value] FROM [dbo].[{this._tableName}]";
-                using (var reader = cmd.ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        var key = reader["Key"].ToString();
-                        var value = reader["Value"].ToString();
-                        data.Add(key, value);
-                    }
-                }
-            }
-        }
-        return data;
-    }
 }
 ```
 
 **2.定义配置提供者**
 
+> 这里并没有直接实现`IConfigurationProvider`接口，而是使用的抽象类：`ConfigurationProvider`,只需要把配置源中的数据添加到`Data`属性中即可。
 ```C#
 public class SqlServerConfigurationProvider : ConfigurationProvider
 {
@@ -159,16 +146,26 @@ public class SqlServerConfigurationProvider : ConfigurationProvider
 
     public override void Load()
     {
-        var data = Source.QueryAll();
-        foreach (var item in data)
+        using (SqlConnection conn = new SqlConnection(this.Source.ConnectionString))
         {
-            this.Data.Add(item.Key, item.Value);
+            conn.Open();
+            using (SqlCommand cmd = conn.CreateCommand())
+            {
+                cmd.CommandText = $"SELECT [Key], [Value] FROM [dbo].[{this.Source.TableName}]";
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var key = reader["Key"].ToString();
+                        var value = reader["Value"].ToString();
+                        this.Data.Add(key, value);
+                    }
+                }
+            }
         }
     }
 }
 ```
-
-这里并没有直接实现`IConfigurationProvider`接口，而是使用的抽象类：`ConfigurationProvider`,只需要把配置源中的数据添加到`Data`属性中即可
 
 **3.提供扩展方法**
 
@@ -184,10 +181,11 @@ public static class SqlServerConfigurationExtensions
 ```
 
 **4.使用自定义的配置源**
+
 ```C#
 static void Main(string[] args)
 {
-    string connectionString = "Server=tcp:127.0.0.1,1433;Database=examples;User Id=sa;Password=Km666888;";
+    string connectionString = "Server=tcp:127.0.0.1,1433;Database=examples;User Id=sa;Password=******;";
     string tableName = "custom-configuration-source";
 
     var configuration = new ConfigurationBuilder()
@@ -195,6 +193,10 @@ static void Main(string[] args)
         .Build();
 
     Console.WriteLine(configuration["Hello"]);
+
+    var section = configuration.GetSection("Logging");
+    Console.WriteLine(section["Level"]);
+
     Console.ReadLine();
 }
 ```

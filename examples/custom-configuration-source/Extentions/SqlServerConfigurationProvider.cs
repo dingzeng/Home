@@ -18,10 +18,22 @@ namespace custom_configuration_source.Extentions
 
         public override void Load()
         {
-            var data = Source.QueryAll();
-            foreach (var item in data)
+            using (SqlConnection conn = new SqlConnection(this.Source.ConnectionString))
             {
-                this.Data.Add(item.Key, item.Value);
+                conn.Open();
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = $"SELECT [Key], [Value] FROM [dbo].[{this.Source.TableName}]";
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var key = reader["Key"].ToString();
+                            var value = reader["Value"].ToString();
+                            this.Data.Add(key, value);
+                        }
+                    }
+                }
             }
         }
     }

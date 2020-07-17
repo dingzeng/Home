@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using Microsoft.Extensions.Configuration;
 
@@ -16,6 +17,10 @@ namespace custom_configuration_source
                 .Build();
 
             Console.WriteLine(configuration["Hello"]);
+
+            var section = configuration.GetSection("Logging");
+            Console.WriteLine(section["Level"]);
+
             Console.ReadLine();
         }
     }
