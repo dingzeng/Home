@@ -4,7 +4,7 @@
 
 ## 懒汉式单例模式
 
-```
+```C#
 public class SingletonA
 {
     private static SingletonA instance;
@@ -40,7 +40,7 @@ public class SingletonA
 
 ## 饿汉式单例模式
 
-```
+```C#
 public sealed class SingletonB
 {
     private static readonly SingletonB instance = new SingletonB();

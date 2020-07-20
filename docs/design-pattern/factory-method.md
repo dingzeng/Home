@@ -4,7 +4,7 @@
 
 下面通过一个计算器的程序来说明工厂方法模式：
 
-```
+```C#
 public abstract class OperatorBase
 {
     public abstract double Calculate(double number1, double number2);
@@ -51,7 +51,7 @@ public class SubstructFactory : OperatorFactory
 ```
 
 客户端代码：
-```
+```C#
 void Main()
 {
     var addOpt = new AddOperatorFactory().CreateOperator();

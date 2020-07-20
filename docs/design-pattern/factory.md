@@ -4,7 +4,7 @@
 
 下面通过一个计算器的程序来说明简单工厂模式：
 **面向过程方案**
-```
+```C#
 Console.WriteLine("请输入第一个数字：");
 int number1 = Convert.ToInt32(Console.ReadLine());
 
@@ -38,7 +38,7 @@ Console.WriteLine("result:" + result);
 ```
 
 **简单工厂方案**
-```
+```C#
 public abstract class OperatorBase
 {
     public abstract double Calculate(double number1, double number2);
@@ -103,7 +103,7 @@ public class OperatorFactory
 ```
 
 客户端代码：
-```
+```C#
 Console.WriteLine("请输入第一个数字：");
 int number1 = Convert.ToInt32(Console.ReadLine());
 
