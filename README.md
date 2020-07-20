@@ -2,7 +2,13 @@
 
 ## 目录
 
-- [设计模式](./docs/design-pattern)
+- 设计模式
+  - [简单工厂模式](./docs/factory.md)
+  - [抽象工厂模式](./docs/abstract-factory.md)
+  - [工厂方法模式](./docs/factory-method.md)
+  - [单例](./docs/singleton.md)
+  - [Builder模式](./docs/builder.md)
+  - [策略模式](./docs/strategy.md)
 - [递归算法的应用](./docs/algorithm-recursion.md)
 - [C#编码规范](./docs/csharp-coding-standards.md)
 - [Git简介](./docs/git-introduce.md)
