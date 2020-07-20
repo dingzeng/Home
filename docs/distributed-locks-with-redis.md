@@ -1,11 +1,4 @@
----
-title: Redis实现的分布式锁
-categories:
-- notes
-tags:
-- redis
-- distributed-lock
----
+# Redis实现的分布式锁
 
 在高并发的分布式系统中，很大可能需要使用到分布式锁，来解决共享资源在同一时间段内被单一线程占有的问题
 
