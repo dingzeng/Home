@@ -1,8 +1,9 @@
+# 抽象工厂模式
 
-> 抽象工厂模式，提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类
+抽象工厂模式，提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类
 
 下面通过示例代码说明抽象工厂模式(只是进行说明，不代表ADO.NET实际的实现):
-```
+```C#
 // Abstruct Factory
 public abstract class DbProviderFactory
 {
@@ -76,7 +77,7 @@ public class SqlServerDataReader : IDataReader
 ```
 
 客户端代码:
-```
+```C#
 void Main()
 {
     DbProviderFactory dbProvider = null;//TODO 反射出具体的工厂对象

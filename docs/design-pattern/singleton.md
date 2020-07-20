@@ -1,16 +1,10 @@
----
-title: 设计模式-单例
-categories:
-- notes
-tags:
-- design-pattern
----
+# 单例模式
 
 单例模式保证一个类只有一个实例，并提供一个全局访问点
 
 ## 懒汉式单例模式
 
-```
+```C#
 public class SingletonA
 {
     private static SingletonA instance;
@@ -46,7 +40,7 @@ public class SingletonA
 
 ## 饿汉式单例模式
 
-```
+```C#
 public sealed class SingletonB
 {
     private static readonly SingletonB instance = new SingletonB();

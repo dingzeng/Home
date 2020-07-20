@@ -1,11 +1,4 @@
----
-title: ASP.NET中的模型验证
-categories:
-- notes
-tags:
-- C#
-- ASP.NET
----
+# ASP.NET中的模型验证
 
 参考：[model-validation-in-aspnet-web-api](https://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api)
 ASP.NET WebAPI中可以使用`DataAnnotations`的方式进行数据模型验证，常用的特性有：

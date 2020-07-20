@@ -1,16 +1,10 @@
----
-title: 设计模式-建造者模式
-categories:
-- notes
-tags:
-- design-pattern
----
+# Builder模式
 
 建造者模式将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示
 
 下面通过创建一个Http请求报文建造者来演示该设计模式的基本用法:
 
-```
+```C#
 public class DefaultHttpRequestBuilder
 {
     private HttpMethod _method = HttpMethod.Get;
@@ -75,7 +69,7 @@ public class DefaultHttpRequestBuilder
 
 当需要一个Http请求报文的对象时，用户不需要关心对象建造的具体细节，只需要告诉建造者一些关键的参数:
 
-```
+```C#
 static void Main(string[] args)
 {
     var request = new DefaultHttpRequestBuilder()
@@ -93,7 +87,6 @@ static void Main(string[] args)
 ```
 GET http://www.baidu.com HTTP/1.1
 Connection: keep-alive
-
 ```
 
 为了简化建造对象时的写法，建造对象的方法返回对象本身，是链式编程的一种写法。

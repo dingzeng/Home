@@ -1,17 +1,11 @@
----
-title: 设计模式-策略模式
-categories:
-- notes
-tags:
-- design-pattern
----
+# 策略模式
 
 策略模式，它定义了算法家族，分别封装起来，让他们之间可以相互替换，此模式让算法的变化，不会影响到使用算法的客户。
 
 下面将缓存处理的一般方法封装为一个抽象"策略"进行说明
 ![design-pattern-strategy](http://p1.bqimg.com/1949/1cd52268453a01c5.png)
 缓存策略接口：
-```
+```C#
 public interface ICacheStrategy
 {
     void SetCache(string key, object obj);
@@ -23,7 +17,7 @@ public interface ICacheStrategy
 ```
 
 Redis的缓存策略实现：
-```
+```C#
 public class RedisCacheStrategy : ICacheStrategy
 {
     public void SetCache(string key, object obj)
@@ -39,7 +33,7 @@ public class RedisCacheStrategy : ICacheStrategy
 ```
 
 Memcached的缓存策略实现：
-```
+```C#
 public class MemcachedCacheStrategy : ICacheStrategy
 {
     public void SetCache(string key, object obj)
@@ -54,7 +48,7 @@ public class MemcachedCacheStrategy : ICacheStrategy
 ```
 
 策略上下文:
-```
+```C#
 public class CacheContext
 {
     private readonly ICacheStrategy _cacheStrategy;
@@ -86,7 +80,7 @@ public class CacheContext
 ```
 
 客户端程序：
-```
+```C#
 class Program
 {
     void Main(string[] args)

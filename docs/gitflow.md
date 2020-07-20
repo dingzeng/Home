@@ -1,11 +1,4 @@
----
-title: Git Flow
-date: 2016-12-12
-categories:
-- notes
-tags:
-- git
----
+# Git Flow
 
 Git拥有强大而且灵活的分支管理功能，但是灵活也会带来许多问题，所以需要有一个清晰的分支管理规范，Git Flow是一套被广为使用和认同的分支模型。
 
