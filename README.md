@@ -21,7 +21,7 @@
     - [自定义配置源示例](./docs/dotnetcore/custom-configuration-source.md)
     - 集成Serilog
     - 使用Autofac替换.NET Core中的默认DI容器
-  - WebAPI
+  - ASP.NET
     - [使用Swagger提供接口文档](./docs/dotnetcore/use-swagger.md)
     - 集成FluentValidation
     - 使用SignalR实现实时消息推送
